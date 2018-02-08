@@ -1,43 +1,44 @@
 package com.ashu.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
 public class Book {
+
+    public Book(){
+        isAvilable=true;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotNull
-    @Min(1)
+    @Size(min = 3, max = 30)
     private String title;
 
     @NotNull
-    @Min(1)
+    @Size(min = 3, max = 30)
     private String author;
 
     @NotNull
     private String yearOfPublication;
 
     //optional
-    @Null
+    @Column(nullable = true)
     private String isbn;
 
     //optional
-    @Null
+    @Column(nullable = true)
     private String imageUrl;
 
     @NotNull
     private Boolean isAvilable;
-
 
 
     public long getId() {
@@ -88,7 +89,7 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public Boolean getisAvilable() {
+    public Boolean getIsAvilable() {
         return isAvilable;
     }
 
