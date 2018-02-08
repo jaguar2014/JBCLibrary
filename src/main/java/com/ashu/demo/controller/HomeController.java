@@ -15,6 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 public class HomeController {
+
     @Autowired
     BookRepository bookRepository;
 
@@ -58,28 +59,51 @@ public class HomeController {
 
     @GetMapping("/borrow")
     public String borrowBook(Model model){
-        Iterable<Book> books = bookRepository.find
-
+        Iterable<Book> avilableBooks = bookRepository.findByisAvilableTrue();
+        if(avilableBooks==null){
+            return "allBooksAreloaned";
+        }
+        model.addAttribute("avilableBooks",avilableBooks);
 
         return "listbooks";
     }
     //borrow a book with specific Id..name update db with that info
     @PostMapping("/borrow/{id}")
-    public String borrowBook()
+    public String borrowBook(@PathVariable("Id") long id, Model model)
       {
+          Book bookFound = bookRepository.findOne(id);
+          if(bookFound==null){
+              return "The book is alaready loaned";
+          }
+          bookFound.setAvilable(false);
+          bookRepository.save(bookFound);
+
+          return "borrowedconfirm";
+
+
 
 
       }
     //show list of borrowed books
-    @GetMapping("/return/{id}")
-    public String returnBook(){
+    @GetMapping("/return")
+    public String returnBook(Model model){
+     Iterable<Book> borrowedbooks = bookRepository.findByisAvilableFalse();
+     model.addAttribute("borrowedbooks",borrowedbooks);
 
+     return "listbooks";
     }
 
     //allow user to return a book , set the avilable flat to true.. update logic
     @PostMapping("/return/{id}")
-    public String returnBook()
+    public String returnBook(@PathVariable("Id") long id, Model model)
       {
+          Book returnedBook=bookRepository.findOne(id);
+          returnedBook.setAvilable(true);
+          bookRepository.save(returnedBook);
+
+          return "returnedconfirm";
+
+
 
       }
 

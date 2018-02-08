@@ -24,7 +24,8 @@ public class Book {
     @Min(1)
     private String author;
 
-    private Date yearOfPublication;
+    @NotNull
+    private String yearOfPublication;
 
     //optional
     @Null
@@ -35,7 +36,9 @@ public class Book {
     private String imageUrl;
 
     @NotNull
-    private boolean isAvilable;
+    private Boolean isAvilable;
+
+
 
     public long getId() {
         return id;
@@ -61,11 +64,11 @@ public class Book {
         this.author = author;
     }
 
-    public Date getYearOfPublication() {
+    public String getYearOfPublication() {
         return yearOfPublication;
     }
 
-    public void setYearOfPublication(Date yearOfPublication) {
+    public void setYearOfPublication(String yearOfPublication) {
         this.yearOfPublication = yearOfPublication;
     }
 
@@ -85,11 +88,11 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public boolean isAvilable() {
+    public Boolean getisAvilable() {
         return isAvilable;
     }
 
-    public void setAvilable(boolean avilable) {
+    public void setAvilable(Boolean avilable) {
         isAvilable = avilable;
     }
 }

@@ -2,9 +2,33 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Add a book</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
+<div class="container">
+<form th:action="@{/addbook}" th:method="post" th:object="${book}" class="form-group">
+    <input type="hidden" th:field="*{id}" />
+
+    Title:<input type="text" th:field="*{title}" class="form-control"/>
+
+Author: <input type="text" th:field="*{author}" class="form-control"/>
+
+YearOfPub: <input type="text" th:field="*{yearOfPublication}" class="form-control"/>
+
+ISBN:  <input type="text" th:field="*{isbn}" class="form-control"/>
+
+ImageUrl    <input type="text" th:field="*{imageUrl}" class="form-control"/>
+
+   IsAvilable: <input type="radio" th:value="${isAvailable}" th:field="*{isAvilable}" class="form-control" checked="checked"/>
+
+
+    <input type="submit" value="Save"  />
+
+</form>
+</div>
+<script th:replace="template::bootstrapjs"></script>
 </body>
 </html>
