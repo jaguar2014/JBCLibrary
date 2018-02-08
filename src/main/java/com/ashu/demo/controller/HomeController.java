@@ -92,7 +92,7 @@ public class HomeController {
     }
 
     //allow user to return a book , set the avilable flat to true.. update logic
-    @RequestMapping(value = "/return/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/return",method = RequestMethod.POST)
     public String returnBook(@RequestParam("id") long id, Model model)
       {
           Book returnedBook=bookRepository.findOne(id);
