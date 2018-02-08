@@ -6,8 +6,20 @@
 </head>
 <body>
   <ul th:each="book : ${books}">
-      <li th:inline="text">Book Title [[{book.getTitle()}]]</li>
-      <li th:inline="text">Is This Book Avilable [[{book.isAvilable()}]]</li>
+      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+  </ul>
+  <ul th:each="book : ${avilableBooks}">
+      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+  </ul>
+  <ul th:each="book : ${returnedBooks}">
+      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+  </ul>
+  <ul th:each="book : ${borrowedbooks}">
+      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
   </ul>
 
 </body>

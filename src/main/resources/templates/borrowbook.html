@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Borrow A book </title>
+</head>
+<body>
+<ul>
+
+
+
+
+
+    <li th:each="book : ${avilableBooks}">
+    <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+    <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+
+
+        <form th:action="@{/borrow}" th:method="post">
+            <input type="hidden"  name="id" th:value="${book.id}" />
+            <input type="submit" value="Borrow" />
+        </form>
+    </li>
+
+    <!--<a th:href="@{/update/{id}(id=${address.id})}">Update</a>-->
+
+    <!--<li th:each="product : ${products}">-->
+        <!--< span th:text="${product.name}">Microwave< /span>.-->
+        <!--<form action="productDelete" method="post">-->
+            <!--<input type="hidden" name="productId" th:value="${product.id}" />-->
+            <!--<input type="submit" value="Borrar" />-->
+        <!--</form>-->
+    <!--</li>-->
+
+
+    
+</ul>
+</body>
+</html>

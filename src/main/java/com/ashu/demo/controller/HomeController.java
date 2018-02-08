@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -65,11 +63,11 @@ public class HomeController {
         }
         model.addAttribute("avilableBooks",avilableBooks);
 
-        return "listbooks";
+        return "borrowbook";
     }
     //borrow a book with specific Id..name update db with that info
-    @PostMapping("/borrow/{id}")
-    public String borrowBook(@PathVariable("Id") long id, Model model)
+    @RequestMapping(value="/borrow",method = RequestMethod.POST)
+    public String borrowBook(@RequestParam("id") Long id, Model model)
       {
           Book bookFound = bookRepository.findOne(id);
           if(bookFound==null){
@@ -90,12 +88,12 @@ public class HomeController {
      Iterable<Book> borrowedbooks = bookRepository.findByisAvilableFalse();
      model.addAttribute("borrowedbooks",borrowedbooks);
 
-     return "listbooks";
+     return "returnbook";
     }
 
     //allow user to return a book , set the avilable flat to true.. update logic
-    @PostMapping("/return/{id}")
-    public String returnBook(@PathVariable("Id") long id, Model model)
+    @RequestMapping(value = "/return/{id}",method = RequestMethod.POST)
+    public String returnBook(@RequestParam("id") long id, Model model)
       {
           Book returnedBook=bookRepository.findOne(id);
           returnedBook.setAvilable(true);
