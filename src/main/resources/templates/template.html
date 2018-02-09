@@ -14,7 +14,9 @@
                 <a class="navbar-brand" href="#">JBCLibrary</a>
             </div>
             <ul class="nav navbar-nav">
-                <li  th:class="${activeTab ==''}?'active':null"><a href="/">Home</a></li>
+
+
+                <li  th:if="${showHome} ==null" th:class="${activeTab ==''}?'active':null"><a href="/">Home</a></li>
                 <li  th:class="${activeTab =='addbook'}?'active':null"><a href="/addbook">AddBook</a></li>
                 <li  th:class="${activeTab =='list'}?'active':null"><a href="/list">List</a></li>
                 <li  th:class="${activeTab =='borrow'}?'active':null"><a href="/borrow">Borrow</a></li>

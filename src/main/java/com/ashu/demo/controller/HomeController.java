@@ -20,7 +20,9 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String showIndex(){
+    public String showIndex(Model model){
+        Boolean showHome = false;
+        model.addAttribute("showHome",showHome);
 
         return "index";
     }

@@ -9,7 +9,7 @@
 <body>
 <nav th:replace="template::navigation('return')"></nav>
 
-
+<ul>
 <li th:each="book : ${borrowedbooks}">
 <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
 <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
@@ -20,6 +20,8 @@
     <input type="submit" value="Return" />
 </form>
 </li>
+
+</ul>
 
 <script th:replace="template::bootstrapjs"></script>
 </body>
