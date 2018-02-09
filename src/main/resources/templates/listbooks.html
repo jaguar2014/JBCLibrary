@@ -11,7 +11,12 @@
 <nav th:replace="template::navigation('list')"></nav>
   <ul th:each="book : ${books}">
       <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
-      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+<li>
+      <span th:if="${book.getIsAvilable()} == true" th:text="Avilable" />
+      <span th:unless="${book.getIsAvilable()} == true" th:text="Borrowed" />
+
+</li>
+
       <li th:if="${book.getTimeStamp()!= null}" th:inline="text">the book was last borrowed [[${book.getTimeStamp()}]]</li>
 
       <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
