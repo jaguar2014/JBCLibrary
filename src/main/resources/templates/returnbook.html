@@ -6,5 +6,17 @@
 </head>
 <body>
 
+<li th:each="book : ${borrowedbooks}">
+<li th:inline="text">Book Title [[${book.getTitle()}]]</li>
+<li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+
+
+<form th:action="@{/return}" th:method="post">
+    <input type="hidden"  name="id" th:value="${book.id}" />
+    <input type="submit" value="Return" />
+</form>
+</li>
+
+
 </body>
 </html>
