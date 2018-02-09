@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Borrow A book </title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
+<nav th:replace="template::navigation('borrow')"></nav>
 <ul>
 
 
@@ -27,5 +30,6 @@
 
     
 </ul>
+<script th:replace="template::bootstrapjs"></script>
 </body>
 </html>

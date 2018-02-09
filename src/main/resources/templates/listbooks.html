@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>List Of Books</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
+<nav th:replace="template::navigation('list')"></nav>
   <ul th:each="book : ${books}">
       <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
       <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
@@ -22,5 +25,6 @@
       <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
   </ul>
 
+  <script th:replace="template::bootstrapjs"></script>
 </body>
 </html>

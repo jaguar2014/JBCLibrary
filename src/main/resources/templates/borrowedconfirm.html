@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
 </head>
+<nav th:replace="template::navigation('borrow')"></nav>
 <body>
 
 <p>The book is borrowed</p>
+<script th:replace="template::bootstrapjs"></script>
 </body>
 </html>

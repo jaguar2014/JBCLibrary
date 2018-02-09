@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Confirmation Page for returned Book</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
 </head>
 <body>
+<nav th:replace="template::navigation('activeTab')"></nav>
 <p>The Book is returned</p>
+
+<script th:replace="template::bootstrapjs"></script>
 </body>
 </html>

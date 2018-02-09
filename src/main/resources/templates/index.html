@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Library</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
 </head>
 <body>
-
-<ul>
-    <li><a href="/addbook">Add Book To the Library </a></li>
-<li><a href="/list">Show all the books </a></li>
-<li><a href="/borrow">Borrow A book</a></li>
-<li><a href="/return">Return A Book</a></li>
-</ul>
+<nav th:replace="template::navigation('')"></nav>
 
 
+<script th:replace="template::bootstrapjs"></script>
 </body>
 </html>

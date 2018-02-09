@@ -8,13 +8,17 @@
 <body>
 
 <div class="nav">
-    <nav th:fragment="navigation" class="navbar navbar-default">
+    <nav th:fragment="navigation(activeTab)" class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">RB</a>
+                <a class="navbar-brand" href="#">JBCLibrary</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
+                <li  th:class="${activeTab ==''}?'active':null"><a href="/">Home</a></li>
+                <li  th:class="${activeTab =='addbook'}?'active':null"><a href="/addbook">AddBook</a></li>
+                <li  th:class="${activeTab =='list'}?'active':null"><a href="/list">List</a></li>
+                <li  th:class="${activeTab =='borrow'}?'active':null"><a href="/borrow">Borrow</a></li>
+                <li  th:class="${activeTab =='return'}?'active':null"><a href="/return">Return</a></li>
 
             </ul>
         </div>
