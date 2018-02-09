@@ -17,7 +17,7 @@
     <li th:each="book : ${avilableBooks}">
     <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
     <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
-
+    <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
 
         <form th:action="@{/borrow}" th:method="post">
             <input type="hidden"  name="id" th:value="${book.id}" />

@@ -11,18 +11,7 @@
   <ul th:each="book : ${books}">
       <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
       <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
-  </ul>
-  <ul th:each="book : ${avilableBooks}">
-      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
-      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
-  </ul>
-  <ul th:each="book : ${returnedBooks}">
-      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
-      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
-  </ul>
-  <ul th:each="book : ${borrowedbooks}">
-      <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
-      <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
+      <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
   </ul>
 
   <script th:replace="template::bootstrapjs"></script>
