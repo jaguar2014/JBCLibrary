@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Archive of Borrowed Books</title>
+    <link th:replace="template::bootstrapcss" rel="stylesheet" href="#" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet"/>
+</head>
+<body>
+<nav th:replace="template::navigation('archive')"></nav>
+
+<ul th:each="book : ${archive}">
+
+   Book ID: <li th:text="${book.bookId}"></li>
+
+   Last Borrowed : <li th:text="${book.dateLastBorrowed}"></li>
+
+</ul>
+<script th:replace="template::bootstrapjs"></script>
+</body>
+</html>

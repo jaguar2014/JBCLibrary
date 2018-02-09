@@ -2,12 +2,15 @@ package com.ashu.demo.controller;
 
 
 import com.ashu.demo.model.Book;
+import com.ashu.demo.model.BorrowedBookArchive;
+import com.ashu.demo.repository.ArchiveRepo;
 import com.ashu.demo.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import sun.security.krb5.internal.ccache.CredentialsCache;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -17,6 +20,8 @@ public class HomeController {
 
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    ArchiveRepo archiveRepo;
 
 
 
@@ -72,12 +77,17 @@ public class HomeController {
     @RequestMapping(value="/borrow",method = RequestMethod.POST)
     public String borrowBook(@RequestParam("id") Long id, Model model)
       {
+          BorrowedBookArchive borrowedBookArchive = new BorrowedBookArchive();
           Book bookFound = bookRepository.findOne(id);
           if(bookFound==null){
               return "The book is alaready loaned";
           }
           bookFound.setTimeStamp(new Date());
           model.addAttribute("currentTime",bookFound.getTimeStamp());
+          borrowedBookArchive.setBookId(bookFound.getId());
+          borrowedBookArchive.setDateLastBorrowed(bookFound.getTimeStamp());
+
+          archiveRepo.save(borrowedBookArchive);
           bookFound.setAvilable(false);
           bookRepository.save(bookFound);
 
@@ -108,6 +118,14 @@ public class HomeController {
 
 
 
+      }
+      @GetMapping("/archive")
+    public String showArchive(Model model){
+         Iterable<BorrowedBookArchive> archivedBooks = archiveRepo.findAll();
+
+         model.addAttribute("archive",archivedBooks);
+
+        return "borrowhistory";
       }
 
 
