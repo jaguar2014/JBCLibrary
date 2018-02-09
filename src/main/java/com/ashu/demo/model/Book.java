@@ -27,6 +27,7 @@ public class Book {
     private String author;
 
     @NotNull
+    @Size(min = 3, max = 30)
     private String yearOfPublication;
 
     //optional

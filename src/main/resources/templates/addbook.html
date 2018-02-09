@@ -13,15 +13,15 @@
     <input type="hidden" th:field="*{id}" />
 
     Title:<input type="text" th:field="*{title}" class="form-control"/>
-
+    <span th:if="${#fields.hasErrors('title')}"  th:errors="*{title}"></span> <br />
 Author: <input type="text" th:field="*{author}" class="form-control"/>
-
+    <span th:if="${#fields.hasErrors('author')}"  th:errors="*{author}"></span> <br />
 YearOfPub: <input type="text" th:field="*{yearOfPublication}" class="form-control"/>
-
+    <span th:if="${#fields.hasErrors('yearOfPublication')}"  th:errors="*{yearOfPublication}"></span> <br />
 ISBN:  <input type="text" th:field="*{isbn}" class="form-control"/>
-
+    <span th:if="${#fields.hasErrors('isbn')}"  th:errors="*{isbn}"></span> <br />
 ImageUrl    <input type="url" th:field="*{imageUrl}" class="form-control"/>
-
+    <span th:if="${#fields.hasErrors('imageUrl')}"  th:errors="*{imageUrl}"></span> <br />
    <!--IsAvilable: <input type="radio" th:value="${isAvailable}" th:field="*{isAvilable}" class="form-control" checked="checked"/>-->
 
 
