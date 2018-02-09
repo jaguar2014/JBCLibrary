@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 public class HomeController {
@@ -75,6 +76,8 @@ public class HomeController {
           if(bookFound==null){
               return "The book is alaready loaned";
           }
+          bookFound.setTimeStamp(new Date());
+          model.addAttribute("currentTime",bookFound.getTimeStamp());
           bookFound.setAvilable(false);
           bookRepository.save(bookFound);
 

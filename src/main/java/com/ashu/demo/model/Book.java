@@ -38,9 +38,25 @@ public class Book {
     @Column(nullable = true)
     private String imageUrl;
 
+
+
+    @Column(nullable = true)
+    private Date timeStamp;
+
     @NotNull
     private Boolean isAvilable;
 
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Boolean getAvilable() {
+        return isAvilable;
+    }
 
     public long getId() {
         return id;
