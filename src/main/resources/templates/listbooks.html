@@ -12,7 +12,7 @@
   <ul th:each="book : ${books}">
       <li th:inline="text">Book Title [[${book.getTitle()}]]</li>
       <li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>
-      <li th:inline="text">the book was last borrowed [[${book.getTimeStamp()}]]</li>
+      <li th:if="${book.getTimeStamp()!= null}" th:inline="text">the book was last borrowed [[${book.getTimeStamp()}]]</li>
 
       <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
   </ul>
