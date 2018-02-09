@@ -21,6 +21,8 @@
 
     </li>
 <!--<li th:inline="text">Is This Book Avilable [[${book.getIsAvilable()}]]</li>-->
+    <img th:if="${book.getImageUrl()} ==''" src="/images/bookdefault.png" alt="default books"/>
+
     <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
 
 

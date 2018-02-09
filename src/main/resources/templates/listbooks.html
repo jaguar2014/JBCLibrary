@@ -19,7 +19,10 @@
 
       <li th:if="${book.getTimeStamp()!= null}" th:inline="text">the book was last borrowed [[${book.getTimeStamp()}]]</li>
 
-      <li th:inline="text"><a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a></li>
+      <li th:inline="text">
+          <img th:if="${book.getImageUrl()} ==''" src="/images/bookdefault.png" alt="default books"/>
+          <a th:href="${book.getImageUrl()}">[[${book.getImageUrl()}]]</a>
+      </li>
   </ul>
 
   <script th:replace="template::bootstrapjs"></script>
